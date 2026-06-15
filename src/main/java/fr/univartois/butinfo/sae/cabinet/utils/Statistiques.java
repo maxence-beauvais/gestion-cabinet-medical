@@ -10,20 +10,45 @@ import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import fr.univartois.butinfo.sae.cabinet.service.GestionRendezVous;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 /**
  * Module de statistiques du cabinet médical.
- * Agrège des informations issues des différents services pour produire un tableau de bord.
+ * <p>
+ * Cette classe rassemble les informations de tous les services
+ * pour fabriquer un tableau de bord textuel et faire des calculs.
+ * </p>
+ * *  @author Groupe 2 / BARLOY Thomas, BEAUVAIS Maxence, DUBREUCQ Kévin, VANSTRACEELE Lucas
+ * @version 1.0
  */
 public class Statistiques {
+
+    /** Le logger pour afficher des messages ou faire du debogage. */
     private static final Logger LOGGER = LogManager.getLogger(Statistiques.class);
+
+    /** Le service pour gerer les patients. */
     private final GestionPatients gestionPatients;
+
+    /** Le service pour gerer les medecins. */
     private final GestionMedecins gestionMedecins;
+
+    /** Le service pour gerer les medicaments. */
     private final GestionMedicaments gestionMedicaments;
+
+    /** Le service pour gerer les rendez-vous. */
     private final GestionRendezVous gestionRendezVous;
+
+    /** Le service pour gerer les ordonnances. */
     private final GestionOrdonnances gestionOrdonnances;
 
     /**
-     * Constructeur : injecte tous les services nécessaires.
+     * Constructeur de la classe Statistiques.
+     * On lui donne tous les services pour qu'il puisse recuperer les donnees.
+     *
+     * @param gestionPatients Le service contenant la liste des patients.
+     * @param gestionMedecins Le service contenant la liste des medecins.
+     * @param gestionMedicaments Le service contenant la liste des medicaments.
+     * @param gestionRendezVous Le service contenant la liste des rendez-vous.
+     * @param gestionOrdonnances Le service contenant la liste des ordonnances.
      */
     public Statistiques(GestionPatients gestionPatients,
                         GestionMedecins gestionMedecins,
@@ -38,12 +63,13 @@ public class Statistiques {
     }
 
     /**
-     * Affiche un résumé complet des statistiques du cabinet.
+     * Genere un texte qui contient tout le resume des statistiques du cabinet.
+     * * @return Une chaine de caracteres contenant le tableau de bord complet formate.
      */
     public String getStatistiques() {
-    	
-    	StringBuilder string = new StringBuilder();
-    	
+
+        StringBuilder string = new StringBuilder();
+
         string.append("\n╔══════════════════════════════════════════╗\n");
         string.append("║        TABLEAU DE BORD - CABINET MÉDICAL  ║\n");
         string.append("╚══════════════════════════════════════════╝\n");
@@ -68,7 +94,7 @@ public class Statistiques {
         for (Specialite sp : Specialite.values()) {
             int nb = gestionMedecins.rechercherParSpecialite(sp).size();
             if (nb > 0) {
-            	string.append("  • ").append(sp.getLibelle()).append(" : ").append(nb).append("\n");
+                string.append("  • ").append(sp.getLibelle()).append(" : ").append(nb).append("\n");
             }
         }
 
@@ -91,12 +117,17 @@ public class Statistiques {
     // Méthodes utilitaires
     // -------------------------
 
-    /** Retourne le nombre de rendez-vous pour un statut donné. */
+    /** * Compte le nombre de rendez-vous pour un statut particulier.
+     * * @param statut Le statut du rendez-vous que l'on veut compter (Ex: CONFIRME, ANNULE).
+     * @return Le nombre total de rendez-vous qui ont ce statut.
+     */
     public int getNombreRendezVousParStatut(StatutRendezVous statut) {
         return gestionRendezVous.getRendezVousParStatut(statut).size();
     }
 
-    /** Retourne le médecin ayant le plus de rendez-vous (ou null si aucun). */
+    /** * Cherche le medecin qui a le plus grand nombre de rendez-vous.
+     * * @return Le medecin le plus actif de la liste, ou null si aucun medecin n'a de rendez-vous.
+     */
     public Medecin getMedecinLePlusActif() {
         Medecin medecinMax = null;
         int max = 0;
@@ -110,13 +141,18 @@ public class Statistiques {
         return medecinMax;
     }
 
+    /**
+     * Cree une version texte simplifiee de l'objet Statistiques avec les compteurs principaux.
+     *
+     * @return Une chaine de caracteres resumant le contenu de l'objet.
+     */
     @Override
     public String toString() {
         return "Statistiques { " +
-               "patients=" + gestionPatients.getNombrePatients() +
-               ", médecins=" + gestionMedecins.getNombreMedecins() +
-               ", médicaments=" + gestionMedicaments.getNombreMedicaments() +
-               ", RDV=" + gestionRendezVous.getNombreRendezVous() +
-               ", ordonnances=" + gestionOrdonnances.getNombreOrdonnances() + " }";
+                "patients=" + gestionPatients.getNombrePatients() +
+                ", médecins=" + gestionMedecins.getNombreMedecins() +
+                ", médicaments=" + gestionMedicaments.getNombreMedicaments() +
+                ", RDV=" + gestionRendezVous.getNombreRendezVous() +
+                ", ordonnances=" + gestionOrdonnances.getNombreOrdonnances() + " }";
     }
 }

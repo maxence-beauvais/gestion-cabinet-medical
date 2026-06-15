@@ -16,7 +16,7 @@ public class Medecin extends Personne {
    * Constructeur complet d'un Médecin.
    */
   public Medecin(String nom, String prenom, String telephone, String email,
-      String numeroOrdre, Specialite specialite, double tarifHoraire) {
+                 String numeroOrdre, Specialite specialite, double tarifHoraire) {
     super(nom, prenom, telephone, email);
     this.numeroOrdre = numeroOrdre;
     this.specialite = specialite;
@@ -27,7 +27,7 @@ public class Medecin extends Personne {
    * Constructeur simplifié (sans précision du cabinet).
    */
   public Medecin(String nom, String prenom, String telephone, String email,
-      String numeroOrdre, Specialite specialite) {
+                 String numeroOrdre, Specialite specialite) {
     this(nom, prenom, telephone, email, numeroOrdre, specialite, 30.00);
   }
 
@@ -76,8 +76,8 @@ public class Medecin extends Personne {
   @Override
   public String toString() {
     return "Médecin  { " + super.toString() +
-        " | Spécialité: " + specialite.getLibelle() +
-        " | N° Ordre: " + numeroOrdre +
-        " | tarif: " + tarifHoraire + " }";
+            " | Spécialité: " + specialite.getLibelle() +
+            " | N° Ordre: " + numeroOrdre +
+            " | tarif: " + tarifHoraire + " }";
   }
 }

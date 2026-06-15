@@ -12,16 +12,29 @@ import org.apache.logging.log4j.Logger;
 
 /**
  * Module de recherche transversale pour patients et médecins.
- * Regroupe les fonctionnalités de recherche avancée.
+ * <p>
+ * Cette classe regroupe toutes les fonctionnalités de recherche avancée
+ * en utilisant les données des services de gestion des patients et des médecins.
+ * </p>
+ * *  @author Groupe 2 / BARLOY Thomas, BEAUVAIS Maxence, DUBREUCQ Kévin, VANSTRACEELE Lucas
+ * @version 1.0
  */
 public class Recherche {
 
+    /** Le service pour récupérer et chercher des patients. */
     private final GestionPatients gestionPatients;
+
+    /** Le service pour récupérer et chercher des médecins. */
     private final GestionMedecins gestionMedecins;
+
+    /** Le logger pour afficher des messages de débogage dans la console. */
     private static final Logger LOGGER = LogManager.getLogger(Recherche.class);
 
     /**
-     * Constructeur : injecte les services nécessaires.
+     * Constructeur de la classe Recherche.
+     * On lui donne les services de gestion pour qu'il puisse accéder aux listes de données.
+     * * @param gestionPatients Le service contenant la liste des patients.
+     * @param gestionMedecins Le service contenant la liste des médecins.
      */
     public Recherche(GestionPatients gestionPatients, GestionMedecins gestionMedecins) {
         this.gestionPatients = gestionPatients;
@@ -33,7 +46,9 @@ public class Recherche {
     // -------------------------
 
     /**
-     * Recherche des patients par nom ou prénom.
+     * Recherche des patients par leur nom ou leur prénom.
+     * * @param terme Le texte recherché (le nom ou le prénom du patient).
+     * @return La liste des patients qui correspondent au texte recherché.
      */
     public List<Patient> rechercherPatientParNom(String terme) {
         List<Patient> resultats = gestionPatients.rechercherParNom(terme);
@@ -44,7 +59,9 @@ public class Recherche {
     }
 
     /**
-     * Recherche un patient par son numéro de sécurité sociale.
+     * Recherche un patient unique en utilisant son numéro de sécurité sociale.
+     * * @param numeroSecu Le numéro de sécurité sociale recherché (sous forme de chaîne).
+     * @return Le patient trouvé, ou null si aucun patient ne possède ce numéro.
      */
     public Patient rechercherPatientParSecu(String numeroSecu) {
         Patient p = gestionPatients.rechercherParNumeroSecu(numeroSecu);
@@ -59,7 +76,9 @@ public class Recherche {
     // -------------------------
 
     /**
-     * Recherche des médecins par nom ou prénom.
+     * Recherche des médecins par leur nom ou leur prénom.
+     * * @param terme Le texte recherché (le nom ou le prénom du médecin).
+     * @return La liste des médecins qui correspondent au texte recherché.
      */
     public List<Medecin> rechercherMedecinParNom(String terme) {
         List<Medecin> resultats = gestionMedecins.rechercherParNom(terme);
@@ -70,7 +89,9 @@ public class Recherche {
     }
 
     /**
-     * Recherche des médecins par spécialité.
+     * Recherche tous les médecins qui ont une spécialité précise.
+     * * @param specialite La spécialité médicale recherchée (Ex: GENERALISTE, CARDIOLOGUE).
+     * @return La liste des médecins qui pratiquent cette spécialité.
      */
     public List<Medecin> rechercherMedecinParSpecialite(Specialite specialite) {
         List<Medecin> resultats = gestionMedecins.rechercherParSpecialite(specialite);
@@ -81,7 +102,9 @@ public class Recherche {
     }
 
     /**
-     * Recherche un médecin par son numéro d'ordre.
+     * Recherche un médecin unique en utilisant son numéro d'ordre.
+     * * @param numeroOrdre Le numéro d'ordre du médecin recherché.
+     * @return Le médecin trouvé, ou null si aucun médecin ne possède ce numéro d'ordre.
      */
     public Medecin rechercherMedecinParOrdre(String numeroOrdre) {
         Medecin m = gestionMedecins.rechercherParNumeroOrdre(numeroOrdre);
@@ -91,6 +114,10 @@ public class Recherche {
         return m;
     }
 
+    /**
+     * Crée une version texte simplifiée du module de recherche indiquant le nombre d'éléments disponibles.
+     * * @return Une chaîne de caractères résumant le contenu du module.
+     */
     @Override
     public String toString() {
         return "Module Recherche { patients=" + gestionPatients.getNombrePatients() +

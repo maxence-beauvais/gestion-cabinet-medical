@@ -9,15 +9,27 @@ import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 /**
  * Service de gestion des rendez-vous médicaux.
+ * <p>
+ * Cette classe permet de gérer le planning du cabinet : ajouter, valider,
+ * annuler et chercher des rendez-vous dans une liste.
+ * </p>
+ * *  @author Groupe 2 / BARLOY Thomas, BEAUVAIS Maxence, DUBREUCQ Kévin, VANSTRACEELE Lucas
+ * @version 1.0
  */
 public class GestionRendezVous {
 
+    /** La liste qui stocke tous les rendez-vous du cabinet médical. */
     private final List<RendezVous> rendezVous;
+
+    /** Le logger pour afficher les messages et erreurs dans la console. */
     private static final Logger LOGGER = LogManager.getLogger(GestionRendezVous.class);
+
     /**
-     * Constructeur : initialise la liste vide.
+     * Constructeur de la classe GestionRendezVous.
+     * Il crée une liste vide au départ pour pouvoir enregistrer les futurs rendez-vous.
      */
     public GestionRendezVous() {
         this.rendezVous = new ArrayList<>();
@@ -28,15 +40,20 @@ public class GestionRendezVous {
     // -------------------------
 
     /**
-     * Prend un rendez-vous si le créneau du médecin est libre.
-     * @return le rendez-vous créé, ou null si le créneau est pris
+     * Permet de créer et de prendre un rendez-vous si le médecin est libre.
+     * * @param patient Le patient qui demande le rendez-vous.
+     * @param medecin Le médecin choisi pour la consultation.
+     * @param dateHeure Le jour et l'heure prévus pour le rendez-vous.
+     * @param dureeMinutes La durée totale de la consultation en minutes.
+     * @param motif La raison médicale du rendez-vous.
+     * @return Le rendez-vous créé, ou null si le médecin est déjà occupé à ce moment-je.
      */
     public RendezVous prendreRendezVous(Patient patient, Medecin medecin,
-                                         LocalDateTime dateHeure, int dureeMinutes, String motif) {
+                                        LocalDateTime dateHeure, int dureeMinutes, String motif) {
         // Vérification de disponibilité du médecin
         if (!estDisponible(medecin, dateHeure)) {
             LOGGER.debug("ERREUR : Le Dr " + medecin.getNomComplet() +
-                               " n'est pas disponible à ce créneau.");
+                    " n'est pas disponible à ce créneau.");
             return null;
         }
         RendezVous rdv = new RendezVous(patient, medecin, dateHeure, dureeMinutes, motif);
@@ -46,7 +63,8 @@ public class GestionRendezVous {
     }
 
     /**
-     * Annule un rendez-vous par son ID.
+     * Annule un rendez-vous enregistré en utilisant son identifiant numérique.
+     * * @param id L'identifiant (ID) unique du rendez-vous à annuler.
      */
     public void annulerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
@@ -59,7 +77,8 @@ public class GestionRendezVous {
     }
 
     /**
-     * Confirme un rendez-vous par son ID.
+     * Confirme un rendez-vous enregistré en utilisant son identifiant numérique.
+     * * @param id L'identifiant (ID) unique du rendez-vous à confirmer.
      */
     public void confirmerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
@@ -72,7 +91,9 @@ public class GestionRendezVous {
     }
 
     /**
-     * Marque un rendez-vous comme terminé.
+     * Marque un rendez-vous comme terminé quand la consultation est finie.
+     * * @param id L'identifiant (ID) unique du rendez-vous à clore.
+     * @return true si le rendez-vous a bien été marqué comme terminé, false s'il n'existe pas.
      */
     public boolean terminerRendezVous(int id) {
         RendezVous rdv = rechercherParId(id);
@@ -90,7 +111,9 @@ public class GestionRendezVous {
     // -------------------------
 
     /**
-     * Recherche un rendez-vous par son ID.
+     * Recherche un rendez-vous précis dans la liste grâce à son identifiant unique.
+     * * @param id L'identifiant (ID) recherché.
+     * @return Le rendez-vous correspondant à cet ID, ou null si on ne le trouve pas.
      */
     public RendezVous rechercherParId(int id) {
         for (RendezVous rdv : rendezVous) {
@@ -100,7 +123,9 @@ public class GestionRendezVous {
     }
 
     /**
-     * Retourne tous les rendez-vous d'un patient donné.
+     * Récupère la liste de tous les rendez-vous qui concernent un patient précis.
+     * * @param patient Le patient dont on cherche l'historique des rendez-vous.
+     * @return Une liste contenant les rendez-vous de ce patient (liste vide si aucun).
      */
     public List<RendezVous> getRendezVousPatient(Patient patient) {
         List<RendezVous> resultats = new ArrayList<>();
@@ -111,7 +136,9 @@ public class GestionRendezVous {
     }
 
     /**
-     * Retourne tous les rendez-vous d'un médecin donné.
+     * Récupère la liste de tous les rendez-vous programmés pour un médecin précis.
+     * * @param medecin Le médecin dont on cherche les rendez-vous.
+     * @return Une liste contenant les rendez-vous de ce médecin (liste vide si aucun).
      */
     public List<RendezVous> getRendezVousMedecin(Medecin medecin) {
         List<RendezVous> resultats = new ArrayList<>();
@@ -122,7 +149,9 @@ public class GestionRendezVous {
     }
 
     /**
-     * Retourne les rendez-vous filtrés par statut.
+     * Récupère les rendez-vous filtrés selon un statut donné.
+     * * @param statut Le statut recherché (Ex: CONFIRME, ANNULE, PLANIFIE).
+     * @return Une liste contenant uniquement les rendez-vous ayant ce statut.
      */
     public List<RendezVous> getRendezVousParStatut(StatutRendezVous statut) {
         List<RendezVous> resultats = new ArrayList<>();
@@ -133,14 +162,17 @@ public class GestionRendezVous {
     }
 
     /**
-     * Vérifie si un médecin est disponible à une date/heure donnée.
-     * Un médecin est indisponible si un RDV non annulé existe à la même heure.
+     * Vérifie si un médecin est libre à un horaire précis.
+     * Un médecin n'est pas libre s'il a déjà un rendez-vous à cette heure-là qui n'est pas annulé.
+     * * @param medecin Le médecin à vérifier.
+     * @param dateHeure Le jour et l'heure du créneau à tester.
+     * @return true si le médecin n'a pas d'autre rendez-vous en même temps, false sinon.
      */
     public boolean estDisponible(Medecin medecin, LocalDateTime dateHeure) {
         for (RendezVous rdv : rendezVous) {
             if (rdv.getMedecin().equals(medecin) &&
-                rdv.getDateHeure().equals(dateHeure) &&
-                rdv.getStatut() != StatutRendezVous.ANNULE) {
+                    rdv.getDateHeure().equals(dateHeure) &&
+                    rdv.getStatut() != StatutRendezVous.ANNULE) {
                 return false;
             }
         }
@@ -148,14 +180,16 @@ public class GestionRendezVous {
     }
 
     /**
-     * Retourne la liste complète des rendez-vous.
+     * Retourne une copie de la liste complète de tous les rendez-vous de l'application.
+     * * @return Une nouvelle liste contenant tous les rendez-vous enregistrés.
      */
     public List<RendezVous> listerTousLesRendezVous() {
         return new ArrayList<>(rendezVous);
     }
 
     /**
-     * Retourne le nombre total de rendez-vous.
+     * Donne la taille de la liste, c'est-à-dire le nombre total de rendez-vous stockés.
+     * * @return Le nombre total de rendez-vous existants.
      */
     public int getNombreRendezVous() {
         return rendezVous.size();
