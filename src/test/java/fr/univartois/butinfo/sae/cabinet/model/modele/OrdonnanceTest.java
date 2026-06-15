@@ -1,8 +1,7 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
 import fr.univartois.butinfo.sae.cabinet.model.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
-import fr.univartois.butinfo.sae.cabinet.model.modele.Ordonnance;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
 import org.junit.jupiter.api.Test;
@@ -30,10 +29,12 @@ class OrdonnanceTest {
     void testCreationOrdonnanceEtGetters() {
         LocalDate dateValidite = LocalDate.now().plusMonths(3);
         Ordonnance ordonnance = new Ordonnance(medecin, patient, dateValidite, "Prendre au repas");
+
         assertThat(ordonnance.getId()).isEqualTo(1);
         assertThat(ordonnance.getMedecin()).isEqualTo(medecin);
         assertThat(ordonnance.getPatient()).isEqualTo(patient);
         assertThat(ordonnance.getDateValidite()).isEqualTo(dateValidite);
+        assertThat(ordonnance.getRemarques()).isEqualTo("Prendre au repas");
     }
 
     @Test
@@ -53,7 +54,6 @@ class OrdonnanceTest {
                 .contains("Paul Martin")
                 .contains("2026-12-31");
     }
-
     
 }
 
