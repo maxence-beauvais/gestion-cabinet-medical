@@ -1,6 +1,5 @@
 package fr.univartois.butinfo.sae.cabinet.utils;
 
-import fr.univartois.butinfo.sae.cabinet.Main;
 import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
@@ -20,6 +19,7 @@ public class Recherche {
     private final GestionPatients gestionPatients;
     private final GestionMedecins gestionMedecins;
     private static final Logger LOGGER = LogManager.getLogger(Recherche.class);
+
     /**
      * Constructeur : injecte les services nécessaires.
      */
@@ -37,7 +37,9 @@ public class Recherche {
      */
     public List<Patient> rechercherPatientParNom(String terme) {
         List<Patient> resultats = gestionPatients.rechercherParNom(terme);
-        afficherResultatsPatients(resultats, "Patients trouvés pour \"" + terme + "\"");
+        if (resultats.isEmpty()) {
+            LOGGER.debug("Aucun patient trouvé pour le terme : " + terme);
+        }
         return resultats;
     }
 
@@ -46,9 +48,7 @@ public class Recherche {
      */
     public Patient rechercherPatientParSecu(String numeroSecu) {
         Patient p = gestionPatients.rechercherParNumeroSecu(numeroSecu);
-        if (p != null) {
-            LOGGER.info("Patient trouvé : " + p);
-        } else {
+        if (p == null) {
             LOGGER.debug("Aucun patient trouvé pour le numéro de sécu : " + numeroSecu);
         }
         return p;
@@ -63,7 +63,9 @@ public class Recherche {
      */
     public List<Medecin> rechercherMedecinParNom(String terme) {
         List<Medecin> resultats = gestionMedecins.rechercherParNom(terme);
-        afficherResultatsMedecins(resultats, "Médecins trouvés pour \"" + terme + "\"");
+        if (resultats.isEmpty()) {
+            LOGGER.debug("Aucun médecin trouvé pour le terme : " + terme);
+        }
         return resultats;
     }
 
@@ -72,8 +74,9 @@ public class Recherche {
      */
     public List<Medecin> rechercherMedecinParSpecialite(Specialite specialite) {
         List<Medecin> resultats = gestionMedecins.rechercherParSpecialite(specialite);
-        afficherResultatsMedecins(resultats,
-            "Médecins de spécialité \"" + specialite.getLibelle() + "\"");
+        if (resultats.isEmpty()) {
+            LOGGER.debug("Aucun médecin trouvé pour la spécialité : " + specialite.getLibelle());
+        }
         return resultats;
     }
 
@@ -82,39 +85,15 @@ public class Recherche {
      */
     public Medecin rechercherMedecinParOrdre(String numeroOrdre) {
         Medecin m = gestionMedecins.rechercherParNumeroOrdre(numeroOrdre);
-        if (m != null) {
-            LOGGER.info("Médecin trouvé : " + m);
-        } else {
-            LOGGER.info("Aucun médecin trouvé pour le n° d'ordre : " + numeroOrdre);
+        if (m == null) {
+            LOGGER.debug("Aucun médecin trouvé pour le n° d'ordre : " + numeroOrdre);
         }
         return m;
-    }
-
-    // -------------------------
-    // Affichage des résultats
-    // -------------------------
-
-    private void afficherResultatsPatients(List<Patient> liste, String titre) {
-        LOGGER.info("--- " + titre + " (" + liste.size() + " résultat(s)) ---");
-        if (liste.isEmpty()) {
-            LOGGER.debug("  Aucun résultat.");
-        } else {
-            for (Patient p : liste) LOGGER.info("  " + p);
-        }
-    }
-
-    private void afficherResultatsMedecins(List<Medecin> liste, String titre) {
-        LOGGER.info("--- " + titre + " (" + liste.size() + " résultat(s)) ---");
-        if (liste.isEmpty()) {
-            LOGGER.debug("  Aucun résultat.");
-        } else {
-            for (Medecin m : liste) LOGGER.info("  " + m);
-        }
     }
 
     @Override
     public String toString() {
         return "Module Recherche { patients=" + gestionPatients.getNombrePatients() +
-               ", médecins=" + gestionMedecins.getNombreMedecins() + " }";
+                ", médecins=" + gestionMedecins.getNombreMedecins() + " }";
     }
 }

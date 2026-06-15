@@ -50,11 +50,11 @@ public class Main {
         // ============================================================
         LOGGER.info("=== AJOUT DES MÉDECINS ===");
         Medecin dr1 = new Medecin("Dupont", "Jean", "0312345678", "j.dupont@cabinet.fr",
-                                   "ORD-001", Specialite.GENERALISTE, 30.0);
+                "ORD-001", Specialite.GENERALISTE, 30.0);
         Medecin dr2 = new Medecin("Martin", "Sophie", "0398765432", "s.martin@cabinet.fr",
-                                   "ORD-002", Specialite.CARDIOLOGUE, 50.0);
+                "ORD-002", Specialite.CARDIOLOGUE, 50.0);
         Medecin dr3 = new Medecin("Bernard", "Lucie", "0367891234", "l.bernard@cabinet.fr",
-                                   "ORD-003", Specialite.PEDIATRE, 40.0);
+                "ORD-003", Specialite.PEDIATRE, 40.0);
         gestionMedecins.ajouterMedecin(dr1);
         gestionMedecins.ajouterMedecin(dr2);
         gestionMedecins.ajouterMedecin(dr3);
@@ -64,14 +64,14 @@ public class Main {
         // ============================================================
         LOGGER.info("\n=== AJOUT DES PATIENTS ===");
         Patient p1 = new Patient("Leblanc", "Paul", "0612345678", "p.leblanc@mail.fr",
-                                  "12 rue des Lilas, Arras",
-                                  LocalDate.of(1985, 3, 22), "185036562012345", .50);
+                "12 rue des Lilas, Arras",
+                LocalDate.of(1985, 3, 22), "185036562012345", .50);
         Patient p2 = new Patient("Moreau", "Claire", "0687654321", "c.moreau@mail.fr",
-                                  "8 avenue Foch, Lens",
-                                  LocalDate.of(1995, 7, 15), "295076210054321");
+                "8 avenue Foch, Lens",
+                LocalDate.of(1995, 7, 15), "295076210054321");
         Patient p3 = new Patient("Petit", "Antoine", "0655443322", "a.petit@mail.fr",
-                                  "3 impasse du Moulin, Douai",
-                                  LocalDate.of(2010, 11, 5), "210116210011122", .6);
+                "3 impasse du Moulin, Douai",
+                LocalDate.of(2010, 11, 5), "210116210011122", .6);
         gestionPatients.ajouterPatient(p1);
         gestionPatients.ajouterPatient(p2);
         gestionPatients.ajouterPatient(p3);
@@ -81,13 +81,13 @@ public class Main {
         // ============================================================
         LOGGER.info("\n=== AJOUT DES MÉDICAMENTS ===");
         Medicament med1 = new Medicament("Doliprane 1000mg",
-                                          "Antalgique et antipyrétique", 5.5);
+                "Antalgique et antipyrétique", 5.5);
         Medicament med2 = new Medicament("Amoxicilline 500mg",
-                                          "Antibiotique à large spectre", 13.25);
+                "Antibiotique à large spectre", 13.25);
         Medicament med3 = new Medicament("Ibuprofène 400mg",
-                                          "Anti-inflammatoire non stéroïdien", 43.12);
+                "Anti-inflammatoire non stéroïdien", 43.12);
         Medicament med4 = new Medicament("Lisinopril 10mg",
-                                          "Inhibiteur de l'enzyme de conversion", 24.56);
+                "Inhibiteur de l'enzyme de conversion", 24.56);
         gestionMedicaments.ajouterMedicament(med1);
         gestionMedicaments.ajouterMedicament(med2);
         gestionMedicaments.ajouterMedicament(med3);
@@ -133,27 +133,42 @@ public class Main {
         LOGGER.info(ordo2);
 
         // ============================================================
-        // 7. Module de recherche
+        // 7. Module de recherche (Adapté avec affichage via Logger)
         // ============================================================
         LOGGER.info("\n=== MODULE DE RECHERCHE ===");
 
         LOGGER.info("\n>> Recherche patient par nom 'leblanc':");
-        recherche.rechercherPatientParNom("leblanc");
+        List<Patient> patientsParNom = recherche.rechercherPatientParNom("leblanc");
+        LOGGER.info("--- Patients trouvés pour \"leblanc\" (" + patientsParNom.size() + " résultat(s)) ---");
+        for (Patient p : patientsParNom) {
+            LOGGER.info("  " + p);
+        }
 
         LOGGER.info("\n>> Recherche médecin par spécialité CARDIOLOGUE:");
-        recherche.rechercherMedecinParSpecialite(Specialite.CARDIOLOGUE);
+        List<Medecin> medecinsParSpec = recherche.rechercherMedecinParSpecialite(Specialite.CARDIOLOGUE);
+        LOGGER.info("--- Médecins de spécialité \"Cardiologue\" (" + medecinsParSpec.size() + " résultat(s)) ---");
+        for (Medecin m : medecinsParSpec) {
+            LOGGER.info("  " + m);
+        }
 
         LOGGER.info("\n>> Recherche médecin par nom 'martin':");
-        recherche.rechercherMedecinParNom("martin");
+        List<Medecin> medecinsParNom = recherche.rechercherMedecinParNom("martin");
+        LOGGER.info("--- Médecins trouvés pour \"martin\" (" + medecinsParNom.size() + " résultat(s)) ---");
+        for (Medecin m : medecinsParNom) {
+            LOGGER.info("  " + m);
+        }
 
         LOGGER.info("\n>> Recherche patient par n° sécu:");
-        recherche.rechercherPatientParSecu("185036562012345");
+        Patient patientSecu = recherche.rechercherPatientParSecu("185036562012345");
+        if (patientSecu != null) {
+            LOGGER.info("Patient trouvé : " + patientSecu);
+        }
 
         // ============================================================
         // 8. Module de statistiques
         // ============================================================
-		LOGGER.info("\n=== MODULE DE STATISTIQUES ===");
-		LOGGER.info(stats.getStatistiques());
+        LOGGER.info("\n=== MODULE DE STATISTIQUES ===");
+        LOGGER.info(stats.getStatistiques());
 
         Medecin actif = stats.getMedecinLePlusActif();
         if (actif != null) {
@@ -170,7 +185,7 @@ public class Main {
         // Mise à jour d'un médecin
         gestionMedecins.mettreAJourMedecin(dr1.getId(),
                 "Dupont", "Jean", 33.45, "0312345678",
-            "j.dupont@cabinet.fr",  Specialite.GENERALISTE);
+                "j.dupont@cabinet.fr",  Specialite.GENERALISTE);
 
         // Mise à jour d'un patient
         gestionPatients.mettreAJourPatient(p1.getId(),
