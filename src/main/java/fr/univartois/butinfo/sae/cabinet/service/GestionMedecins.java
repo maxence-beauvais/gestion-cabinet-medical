@@ -5,13 +5,16 @@ import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
 import java.util.ArrayList;
 import java.util.List;
 
+import fr.univartois.butinfo.sae.cabinet.utils.Recherche;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Service de gestion des médecins du cabinet.
  */
 public class GestionMedecins {
 
     private final List<Medecin> medecins;
-
+    private static final Logger LOGGER = LogManager.getLogger(GestionMedecins.class);
     /**
      * Constructeur : initialise la liste vide.
      */
@@ -28,11 +31,11 @@ public class GestionMedecins {
      */
     public void ajouterMedecin(Medecin medecin) {
         if (rechercherParNumeroOrdre(medecin.getNumeroOrdre()) != null) {
-            System.out.println("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
+            LOGGER.debug("ERREUR : Un médecin avec ce numéro d'ordre existe déjà.");
             return;
         }
         medecins.add(medecin);
-        System.out.println("Médecin ajouté : Dr " + medecin.getNomComplet());
+        LOGGER.info("Médecin ajouté : Dr " + medecin.getNomComplet());
     }
 
     /**
@@ -91,7 +94,7 @@ public class GestionMedecins {
                                        Specialite nouvelleSpecialite) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            System.out.println("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Médecin ID=" + id + " introuvable.");
             return;
         }
         m.setNom(nouveauNom);
@@ -100,7 +103,7 @@ public class GestionMedecins {
         m.setTelephone(nouveauTel);
         m.setEmail(nouveauEmail);
         m.setSpecialite(nouvelleSpecialite);
-        System.out.println("Médecin mis à jour : Dr " + m.getNomComplet());
+        LOGGER.info("Médecin mis à jour : Dr " + m.getNomComplet());
     }
 
     /**
@@ -109,11 +112,11 @@ public class GestionMedecins {
     public boolean supprimerMedecin(int id) {
         Medecin m = rechercherParId(id);
         if (m == null) {
-            System.out.println("ERREUR : Médecin ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Médecin ID=" + id + " introuvable.");
             return false;
         }
         medecins.remove(m);
-        System.out.println("Médecin supprimé : Dr " + m.getNomComplet());
+        LOGGER.info("Médecin supprimé : Dr " + m.getNomComplet());
         return true;
     }
 

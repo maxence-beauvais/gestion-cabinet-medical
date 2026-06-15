@@ -3,13 +3,14 @@ package fr.univartois.butinfo.sae.cabinet.service;
 import fr.univartois.butinfo.sae.cabinet.modele.Patient;
 import java.util.ArrayList;
 import java.util.List;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Service de gestion des patients.
  * Fournit les opérations CRUD (Créer, Lire, Mettre à jour, Supprimer).
  */
 public class GestionPatients {
-
+    private static final Logger LOGGER = LogManager.getLogger(GestionOrdonnances.class);
     // Liste interne des patients enregistrés
     private final List<Patient> patients;
 
@@ -29,11 +30,11 @@ public class GestionPatients {
      */
     public void ajouterPatient(Patient patient) {
         if (rechercherParNumeroSecu(patient.getNumeroSecu()) != null) {
-            System.out.println("ERREUR : Un patient avec ce numéro de sécu existe déjà.");
+            LOGGER.debug("ERREUR : Un patient avec ce numéro de sécu existe déjà.");
             return;
         }
         patients.add(patient);
-        System.out.println("Patient ajouté : " + patient.getNomComplet());
+        LOGGER.info("Patient ajouté : " + patient.getNomComplet());
     }
 
     /**
@@ -79,7 +80,7 @@ public class GestionPatients {
                                        String nouvelleAdresse, double nouveauTauxRemboursement) {
         Patient p = rechercherParId(id);
         if (p == null) {
-            System.out.println("ERREUR : Patient ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Patient ID=" + id + " introuvable.");
             return;
         }
         p.setNom(nouveauNom);
@@ -97,11 +98,11 @@ public class GestionPatients {
     public void supprimerPatient(int id) {
         Patient p = rechercherParId(id);
         if (p == null) {
-            System.out.println("ERREUR : Patient ID=" + id + " introuvable.");
+            LOGGER.debug("ERREUR : Patient ID=" + id + " introuvable.");
             return;
         }
         patients.remove(p);
-        System.out.println("Patient supprimé : " + p.getNomComplet());
+        LOGGER.info("Patient supprimé : " + p.getNomComplet());
     }
 
     /**
