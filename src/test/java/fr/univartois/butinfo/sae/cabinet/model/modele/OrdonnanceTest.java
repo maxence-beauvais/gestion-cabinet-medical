@@ -1,8 +1,9 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Ordonnance;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -32,7 +33,7 @@ class OrdonnanceTest {
         assertThat(ordonnance.getMedecin()).isEqualTo(medecin);
         assertThat(ordonnance.getPatient()).isEqualTo(patient);
         assertThat(ordonnance.getDateValidite()).isEqualTo(dateValidite);
-        assertThat(ordonnance.getInstructionsGenerales()).isEqualTo("Prendre au repas");
+        assertThat(ordonnance.getRemarques()).isEqualTo("Prendre au repas");
     }
 
     @Test
