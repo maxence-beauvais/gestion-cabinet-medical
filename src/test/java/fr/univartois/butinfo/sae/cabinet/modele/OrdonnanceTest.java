@@ -44,4 +44,6 @@ class OrdonnanceTest {
                 .contains("2")
                 .contains("Pas de sport");
     }
+    
 }
+
