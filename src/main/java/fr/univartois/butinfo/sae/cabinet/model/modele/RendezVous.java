@@ -1,6 +1,6 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
-import fr.univartois.butinfo.sae.cabinet.enumeration.StatutRendezVous;
+import fr.univartois.butinfo.sae.cabinet.model.enumeration.StatutRendezVous;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 

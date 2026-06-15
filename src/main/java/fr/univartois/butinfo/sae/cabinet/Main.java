@@ -1,18 +1,18 @@
 package fr.univartois.butinfo.sae.cabinet;
 
-import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
-import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
-import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
-import fr.univartois.butinfo.sae.cabinet.modele.Ordonnance;
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
-import fr.univartois.butinfo.sae.cabinet.modele.RendezVous;
-import fr.univartois.butinfo.sae.cabinet.service.GestionMedecins;
-import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
-import fr.univartois.butinfo.sae.cabinet.service.GestionOrdonnances;
-import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
-import fr.univartois.butinfo.sae.cabinet.service.GestionRendezVous;
-import fr.univartois.butinfo.sae.cabinet.utils.Recherche;
-import fr.univartois.butinfo.sae.cabinet.utils.Statistiques;
+import fr.univartois.butinfo.sae.cabinet.model.enumeration.Specialite;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Ordonnance;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.RendezVous;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionMedecins;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionMedicaments;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionOrdonnances;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionPatients;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionRendezVous;
+import fr.univartois.butinfo.sae.cabinet.model.utils.Recherche;
+import fr.univartois.butinfo.sae.cabinet.model.utils.Statistiques;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

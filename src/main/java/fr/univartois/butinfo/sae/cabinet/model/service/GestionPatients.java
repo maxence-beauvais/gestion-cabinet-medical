@@ -1,6 +1,6 @@
-package fr.univartois.butinfo.sae.cabinet.service;
+package fr.univartois.butinfo.sae.cabinet.model.service;
 
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import java.util.ArrayList;
 import java.util.List;
 import org.apache.logging.log4j.LogManager;

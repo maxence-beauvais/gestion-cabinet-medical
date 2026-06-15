@@ -1,11 +1,10 @@
-package fr.univartois.butinfo.sae.cabinet.service;
+package fr.univartois.butinfo.sae.cabinet.model.service;
 
-import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
-import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
+import fr.univartois.butinfo.sae.cabinet.model.enumeration.Specialite;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
 import java.util.ArrayList;
 import java.util.List;
 
-import fr.univartois.butinfo.sae.cabinet.utils.Recherche;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 /**

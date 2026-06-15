@@ -1,6 +1,7 @@
 package fr.univartois.butinfo.sae.cabinet.service;
 
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.service.GestionPatients;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
