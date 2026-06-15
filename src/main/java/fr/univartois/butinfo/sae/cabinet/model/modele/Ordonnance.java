@@ -98,6 +98,8 @@ public class Ordonnance {
   // Getters et Setters
   // -------------------------
 
+
+
   /**
    * Récupère l'identifiant unique de l'ordonnance.
    *
