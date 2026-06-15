@@ -8,13 +8,14 @@ import fr.univartois.butinfo.sae.cabinet.service.GestionMedicaments;
 import fr.univartois.butinfo.sae.cabinet.service.GestionOrdonnances;
 import fr.univartois.butinfo.sae.cabinet.service.GestionPatients;
 import fr.univartois.butinfo.sae.cabinet.service.GestionRendezVous;
-
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 /**
  * Module de statistiques du cabinet médical.
  * Agrège des informations issues des différents services pour produire un tableau de bord.
  */
 public class Statistiques {
-
+    private static final Logger LOGGER = LogManager.getLogger(Statistiques.class);
     private final GestionPatients gestionPatients;
     private final GestionMedecins gestionMedecins;
     private final GestionMedicaments gestionMedicaments;
@@ -68,8 +69,6 @@ public class Statistiques {
             int nb = gestionMedecins.rechercherParSpecialite(sp).size();
             if (nb > 0) {
             	string.append("  • ").append(sp.getLibelle()).append(" : ").append(nb).append("\n");
-            }
-        }
 
         // -- Top médecins (par nombre de RDV) --
         string.append("\n🏆 MÉDECINS PAR NOMBRE DE RENDEZ-VOUS :\n");
