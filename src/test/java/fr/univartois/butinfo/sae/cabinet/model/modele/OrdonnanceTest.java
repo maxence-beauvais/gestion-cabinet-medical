@@ -27,7 +27,7 @@ class OrdonnanceTest {
     @Test
     void testCreationOrdonnanceEtGetters() {
         LocalDate dateValidite = LocalDate.now().plusMonths(3);
-        Ordonnance ordonnance = new Ordonnance(1, medecin, patient, dateValidite, "Prendre au repas");
+        Ordonnance ordonnance = new Ordonnance(medecin, patient, dateValidite, "Prendre au repas");
 
         assertThat(ordonnance.getId()).isEqualTo(1);
         assertThat(ordonnance.getMedecin()).isEqualTo(medecin);
@@ -39,7 +39,7 @@ class OrdonnanceTest {
     @Test
     void testToStringContientLesInformations() {
         LocalDate dateValidite = LocalDate.of(2026, 12, 31);
-        Ordonnance ordonnance = new Ordonnance(2, medecin, patient, dateValidite, "Pas de sport");
+        Ordonnance ordonnance = new Ordonnance(medecin, patient, dateValidite, "Pas de sport");
 
         assertThat(ordonnance.toString())
                 .contains("2")
