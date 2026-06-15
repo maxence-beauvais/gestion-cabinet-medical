@@ -1,4 +1,4 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
 /**
  * Classe abstraite représentant une personne.

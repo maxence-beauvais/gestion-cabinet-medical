@@ -1,4 +1,4 @@
-package fr.univartois.butinfo.sae.cabinet.enumeration;
+package fr.univartois.butinfo.sae.cabinet.model.enumeration;
 
 /**
  * Énumération des spécialités médicales disponibles dans le cabinet.

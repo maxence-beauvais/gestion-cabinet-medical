@@ -1,10 +1,10 @@
-package fr.univartois.butinfo.sae.cabinet.service;
+package fr.univartois.butinfo.sae.cabinet.model.service;
 
-import fr.univartois.butinfo.sae.cabinet.modele.LignePrescription;
-import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
-import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
-import fr.univartois.butinfo.sae.cabinet.modele.Ordonnance;
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.LignePrescription;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Ordonnance;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;

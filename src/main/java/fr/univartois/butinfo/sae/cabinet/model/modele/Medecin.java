@@ -1,6 +1,6 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
-import fr.univartois.butinfo.sae.cabinet.enumeration.Specialite;
+import fr.univartois.butinfo.sae.cabinet.model.enumeration.Specialite;
 
 /**
  * Classe représentant un médecin du cabinet. Hérite de la classe abstraite Personne.

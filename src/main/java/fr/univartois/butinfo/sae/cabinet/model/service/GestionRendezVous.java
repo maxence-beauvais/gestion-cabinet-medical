@@ -1,9 +1,9 @@
-package fr.univartois.butinfo.sae.cabinet.service;
+package fr.univartois.butinfo.sae.cabinet.model.service;
 
-import fr.univartois.butinfo.sae.cabinet.enumeration.StatutRendezVous;
-import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
-import fr.univartois.butinfo.sae.cabinet.modele.RendezVous;
+import fr.univartois.butinfo.sae.cabinet.model.enumeration.StatutRendezVous;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.RendezVous;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
