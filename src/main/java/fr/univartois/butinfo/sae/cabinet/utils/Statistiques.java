@@ -69,6 +69,8 @@ public class Statistiques {
             int nb = gestionMedecins.rechercherParSpecialite(sp).size();
             if (nb > 0) {
             	string.append("  • ").append(sp.getLibelle()).append(" : ").append(nb).append("\n");
+            }
+        }
 
         // -- Top médecins (par nombre de RDV) --
         string.append("\n🏆 MÉDECINS PAR NOMBRE DE RENDEZ-VOUS :\n");
