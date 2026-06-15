@@ -19,9 +19,30 @@ repositories {
 }
 
 dependencies {
-
+    // Dépendances existantes pour Log4j2
     implementation 'org.apache.logging.log4j:log4j-api:2.20.0'
     implementation 'org.apache.logging.log4j:log4j-core:2.20.0'
+
+    // ---- AJOUT DES DÉPENDANCES POUR LES TESTS (Exercice 5) ----
+
+    // JUnit 5 (Jupiter API et Engine)
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.10.2'
+
+    // JUnit Platform Launcher (Même version 1.10.2 pour correspondre à JUnit 5.10.2)
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.10.2'
+
+    // AssertJ pour des assertions fluides
+    testImplementation 'org.assertj:assertj-core:3.25.3'
+
+    // Mockito pour la création de mocks
+    testImplementation 'org.mockito:mockito-core:5.11.0'
+    // Optionnel mais recommandé : Mockito Jupiter pour pouvoir utiliser l'extension `@ExtendWith(MockitoExtension.class)`
+    testImplementation 'org.mockito:mockito-junit-jupiter:5.11.0'
+}
+
+// Configuration spécifique pour que Gradle sache qu'il doit exécuter des tests JUnit 5
+test {
+    useJUnitPlatform()
 }
 
 // Le nom de la classe contenant la méthode "main".
