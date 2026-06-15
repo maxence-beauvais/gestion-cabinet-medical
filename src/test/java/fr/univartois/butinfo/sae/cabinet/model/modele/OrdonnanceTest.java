@@ -1,8 +1,9 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
-import fr.univartois.butinfo.sae.cabinet.modele.Medecin;
-import fr.univartois.butinfo.sae.cabinet.modele.Patient;
-import fr.univartois.butinfo.sae.cabinet.modele.Medicament;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
+import fr.univartois.butinfo.sae.cabinet.model.modele.Ordonnance;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;

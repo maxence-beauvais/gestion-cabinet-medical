@@ -1,6 +1,5 @@
-package fr.univartois.butinfo.sae.cabinet.modele;
+package fr.univartois.butinfo.sae.cabinet.model.modele;
 
-import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
 import org.junit.jupiter.api.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
