@@ -151,7 +151,7 @@ public class Main {
         // 8. Module de statistiques
         // ============================================================
         System.out.println("\n=== MODULE DE STATISTIQUES ===");
-        stats.afficherTableauDeBord();
+        System.out.println(stats.getStatistiques());
 
         Medecin actif = stats.getMedecinLePlusActif();
         if (actif != null) {

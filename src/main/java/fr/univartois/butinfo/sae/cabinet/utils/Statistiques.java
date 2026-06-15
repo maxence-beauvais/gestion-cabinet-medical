@@ -39,50 +39,51 @@ public class Statistiques {
     /**
      * Affiche un résumé complet des statistiques du cabinet.
      */
-    public void afficherTableauDeBord() {
-        System.out.println("\n╔══════════════════════════════════════════╗");
-        System.out.println("║        TABLEAU DE BORD - CABINET MÉDICAL  ║");
-        System.out.println("╚══════════════════════════════════════════╝");
+    public String getStatistiques() {
+    	
+    	StringBuilder string = new StringBuilder();
+    	
+        string.append("\n╔══════════════════════════════════════════╗\n");
+        string.append("║        TABLEAU DE BORD - CABINET MÉDICAL  ║\n");
+        string.append("╚══════════════════════════════════════════╝\n");
 
         // -- Chiffres globaux --
-        System.out.println("\n📋 CHIFFRES GLOBAUX :");
-        System.out.println("  • Patients enregistrés   : " + gestionPatients.getNombrePatients());
-        System.out.println("  • Médecins enregistrés   : " + gestionMedecins.getNombreMedecins());
-        System.out.println("  • Médicaments référencés : " + gestionMedicaments.getNombreMedicaments());
-        System.out.println("  • Rendez-vous total      : " + gestionRendezVous.getNombreRendezVous());
-        System.out.println("  • Ordonnances émises     : " + gestionOrdonnances.getNombreOrdonnances());
+        string.append("\n📋 CHIFFRES GLOBAUX :");
+        string.append("  • Patients enregistrés   : ").append(gestionPatients.getNombrePatients()).append("\n");
+        string.append("  • Médecins enregistrés   : ").append(gestionMedecins.getNombreMedecins()).append("\n");
+        string.append("  • Médicaments référencés : ").append(gestionMedicaments.getNombreMedicaments()).append("\n");
+        string.append("  • Rendez-vous total      : ").append(gestionRendezVous.getNombreRendezVous()).append("\n");
+        string.append("  • Ordonnances émises     : ").append(gestionOrdonnances.getNombreOrdonnances()).append("\n");
 
         // -- Détail des rendez-vous par statut --
-        System.out.println("\n📅 RENDEZ-VOUS PAR STATUT :");
+        string.append("\n📅 RENDEZ-VOUS PAR STATUT :\n");
         for (StatutRendezVous statut : StatutRendezVous.values()) {
             int nb = gestionRendezVous.getRendezVousParStatut(statut).size();
-            System.out.println("  • " + statut.getLibelle() + " : " + nb);
+            string.append("  • ").append(statut.getLibelle()).append(" : ").append(nb).append("\n");
         }
 
         // -- Médecins par spécialité --
-        System.out.println("\n🩺 MÉDECINS PAR SPÉCIALITÉ :");
+        string.append("\n🩺 MÉDECINS PAR SPÉCIALITÉ :\n");
         for (Specialite sp : Specialite.values()) {
             int nb = gestionMedecins.rechercherParSpecialite(sp).size();
             if (nb > 0) {
-                System.out.println("  • " + sp.getLibelle() + " : " + nb);
+            	string.append("  • ").append(sp.getLibelle()).append(" : ").append(nb).append("\n");
             }
         }
 
         // -- Top médecins (par nombre de RDV) --
-        System.out.println("\n🏆 MÉDECINS PAR NOMBRE DE RENDEZ-VOUS :");
+        string.append("\n🏆 MÉDECINS PAR NOMBRE DE RENDEZ-VOUS :\n");
         for (Medecin m : gestionMedecins.listerTousLesMedecins()) {
             int nbRdv = gestionRendezVous.getRendezVousMedecin(m).size();
             int nbOrdo = gestionOrdonnances.getOrdonnancesMedecin(m).size();
-            System.out.println("  • Dr " + m.getNomComplet() +
-                               " (" + m.getSpecialite().getLibelle() + ")" +
-                               " → " + nbRdv + " RDV, " + nbOrdo + " ordonnances");
+            string.append("  • Dr ").append(m.getNomComplet()).append(" (").append(m.getSpecialite().getLibelle()).append(")").append(" → ").append(nbRdv).append(" RDV, ").append(nbOrdo).append(" ordonnances\n");
         }
 
         // -- Ordonnances valides --
-        System.out.println("\n💊 ORDONNANCES VALIDES (en cours) : " +
-                           gestionOrdonnances.getOrdonnancesValides().size());
+        string.append("\n💊 ORDONNANCES VALIDES (en cours) : ").append(gestionOrdonnances.getOrdonnancesValides().size());
 
-        System.out.println("\n══════════════════════════════════════════════\n");
+        string.append("\n══════════════════════════════════════════════\n");
+        return string.toString();
     }
 
     // -------------------------
