@@ -3,6 +3,9 @@ package fr.univartois.butinfo.sae.cabinet.model.service;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,14 +24,13 @@ public class GestionPatients {
     private static final Logger LOGGER = LogManager.getLogger(GestionPatients.class);
 
     /** Liste interne des patients enregistrés dans l'application. */
-    private final List<Patient> patients;
-
+    private final ObservableList<Patient> patients;
     /**
      * Constructeur de la classe GestionPatients.
      * Il initialise la liste des patients sous forme d'une ArrayList vide.
      */
     public GestionPatients() {
-        this.patients = new ArrayList<>();
+        this.patients = FXCollections.observableArrayList();
     }
 
     // -------------------------

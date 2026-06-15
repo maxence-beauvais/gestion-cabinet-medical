@@ -3,6 +3,9 @@ package fr.univartois.butinfo.sae.cabinet.model.service;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medicament;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,14 +25,13 @@ public class GestionMedicaments {
     private static final Logger LOGGER = LogManager.getLogger(GestionMedicaments.class);
 
     /** Liste interne contenant l'ensemble des médicaments référencés par le cabinet. */
-    private final List<Medicament> medicaments;
-
+    private final ObservableList<Medicament> medicaments;
     /**
      * Constructeur de la classe GestionMedicaments.
      * Il initialise la liste des médicaments sous la forme d'une ArrayList vide.
      */
     public GestionMedicaments() {
-        this.medicaments = new ArrayList<>();
+        this.medicaments = FXCollections.observableArrayList();
     }
 
     // -------------------------

@@ -7,6 +7,9 @@ import fr.univartois.butinfo.sae.cabinet.model.modele.RendezVous;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -22,7 +25,7 @@ import org.apache.logging.log4j.Logger;
 public class GestionRendezVous {
 
     /** La liste qui stocke tous les rendez-vous du cabinet médical. */
-    private final List<RendezVous> rendezVous;
+    private final ObservableList<RendezVous> rendezVous;
 
     /** Le logger pour afficher les messages et erreurs dans la console. */
     private static final Logger LOGGER = LogManager.getLogger(GestionRendezVous.class);
@@ -32,7 +35,7 @@ public class GestionRendezVous {
      * Il crée une liste vide au départ pour pouvoir enregistrer les futurs rendez-vous.
      */
     public GestionRendezVous() {
-        this.rendezVous = new ArrayList<>();
+        this.rendezVous = FXCollections.observableArrayList();
     }
 
     // -------------------------

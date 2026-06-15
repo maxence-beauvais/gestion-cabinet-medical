@@ -8,6 +8,9 @@ import fr.univartois.butinfo.sae.cabinet.model.modele.Patient;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -26,14 +29,13 @@ public class GestionOrdonnances {
     private static final Logger LOGGER = LogManager.getLogger(GestionOrdonnances.class);
 
     /** Liste interne qui stocke toutes les ordonnances du cabinet. */
-    private final List<Ordonnance> ordonnances;
-
+    private final ObservableList<Ordonnance> ordonnances;
     /**
      * Constructeur de la classe GestionOrdonnances.
      * Il initialise la liste des ordonnances sous forme d'une ArrayList vide.
      */
     public GestionOrdonnances() {
-        this.ordonnances = new ArrayList<>();
+        this.ordonnances = FXCollections.observableArrayList();
     }
 
     // -------------------------

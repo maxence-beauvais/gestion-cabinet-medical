@@ -4,6 +4,9 @@ import fr.univartois.butinfo.sae.cabinet.model.enumeration.Specialite;
 import fr.univartois.butinfo.sae.cabinet.model.modele.Medecin;
 import java.util.ArrayList;
 import java.util.List;
+
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -21,8 +24,7 @@ import org.apache.logging.log4j.Logger;
 public class GestionMedecins {
 
     /** Liste interne qui stocke tous les médecins enregistrés dans le système. */
-    private final List<Medecin> medecins;
-
+    private final ObservableList<Medecin> medecins;
     /** Le logger pour afficher les messages de suivi ou de débogage dans la console. */
     private static final Logger LOGGER = LogManager.getLogger(GestionMedecins.class);
 
@@ -31,7 +33,7 @@ public class GestionMedecins {
      * Il initialise la liste des médecins sous forme d'une ArrayList vide.
      */
     public GestionMedecins() {
-        this.medecins = new ArrayList<>();
+        this.medecins = FXCollections.observableArrayList();
     }
 
     // -------------------------
