@@ -166,8 +166,8 @@ public class GestionMedecins {
      *
      * @return Une nouvelle liste contenant l'intégralité des médecins de l'application.
      */
-    public List<Medecin> listerTousLesMedecins() {
-        return new ArrayList<>(medecins);
+    public ObservableList<Medecin> listerTousLesMedecins() {
+        return medecins;
     }
 
     /**

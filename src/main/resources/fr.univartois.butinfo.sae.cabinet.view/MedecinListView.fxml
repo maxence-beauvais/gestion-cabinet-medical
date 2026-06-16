@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.ListView?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.cabinet.controller.MedecinListController">
+    <top>
+        <Label text="Gestion des Médecins" style="-fx-font-size: 18px; -fx-padding: 10;" BorderPane.alignment="CENTER"/>
+    </top>
+    <left>
+        <ListView fx:id="listViewMedecins" prefWidth="250" style="-fx-padding: 10;" />
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="Détails du médecin sélectionné :" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblNom" text="Nom : " />
+            <Label fx:id="lblPrenom" text="Prénom : " />
+            <Label fx:id="lblSpecialite" text="Spécialité : " />
+            <Label fx:id="lblOrdre" text="N° Ordre : " />
+            <Label fx:id="lblPrix" text="Prix consultation : " />
+            <HBox spacing="10" style="-fx-padding: 20 0 0 0;">
+                <Button text="Ajouter" onAction="#ajouter" />
+                <Button text="Modifier" onAction="#modifier" />
+                <Button text="Supprimer" onAction="#supprimer" />
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <Button text="Retour à l'accueil" onAction="#retourAccueil" style="-fx-margin: 10;" BorderPane.alignment="CENTER" />
+    </bottom>
+</BorderPane>
