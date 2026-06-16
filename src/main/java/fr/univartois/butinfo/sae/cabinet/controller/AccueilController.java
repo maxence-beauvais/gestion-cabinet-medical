@@ -82,7 +82,6 @@ public class AccueilController {
 
     @FXML
     void ouvrirGestionOrdonnances(ActionEvent event) {
-        /**
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr.univartois.butinfo.sae.cabinet.view/OrdonnanceListView.fxml"));
             Scene scene = new Scene(loader.load(), 800, 600);
@@ -94,7 +93,6 @@ public class AccueilController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         */
     }
 
 }

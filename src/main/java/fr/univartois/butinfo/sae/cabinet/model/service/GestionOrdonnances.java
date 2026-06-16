@@ -136,8 +136,8 @@ public class GestionOrdonnances {
      * Cela évite que la liste d'origine ne soit modifiée en dehors du service.
      * * @return Une nouvelle liste contenant l'intégralité des ordonnances.
      */
-    public List<Ordonnance> listerToutesLesOrdonnances() {
-        return new ArrayList<>(ordonnances);
+    public ObservableList<Ordonnance> listerToutesLesOrdonnances() {
+        return ordonnances;
     }
 
     /**

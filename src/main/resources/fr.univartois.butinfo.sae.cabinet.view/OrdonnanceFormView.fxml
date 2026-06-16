@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+<VBox spacing="15.0" style="-fx-padding: 20;" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.cabinet.controller.OrdonnanceFormController">
+    <ComboBox fx:id="comboPatient" promptText="Sélectionner le patient" />
+    <ComboBox fx:id="comboMedecin" promptText="Médecin prescripteur" />
+    <TextField fx:id="txtValidite" promptText="Date validité (Ex: 2025-12-31)" />
+    <TextField fx:id="txtRemarques" promptText="Remarques" />
+    <HBox spacing="20"><Button text="Créer Ordonnance" onAction="#valider" /><Button text="Annuler" onAction="#annuler" /></HBox>
+</VBox>
