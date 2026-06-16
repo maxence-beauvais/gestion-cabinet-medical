@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Button?>
+
+
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.cabinet.controller.PatientListController">
+    <top>
+        <Label text="Gestion des Patients" style="-fx-font-size: 18px; -fx-padding: 10;" BorderPane.alignment="CENTER"/>
+    </top>
+    <left>
+        <ListView fx:id="listViewPatients" prefWidth="250" style="-fx-padding: 10;" />
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label text="Détails du patient sélectionné :" style="-fx-font-weight: bold;" />
+            <Label fx:id="lblNom" text="Nom : " />
+            <Label fx:id="lblPrenom" text="Prénom : " />
+            <Label fx:id="lblSecu" text="N° Sécu : " />
+            <HBox spacing="10" style="-fx-padding: 20 0 0 0;">
+                <Button text="Ajouter" onAction="#ajouterPatient" />
+                <Button text="Modifier" onAction="#modifierPatient" />
+                <Button text="Supprimer" onAction="#supprimerPatient" />
+            </HBox>
+        </VBox>
+    </center>
+    <bottom>
+        <Button text="Retour à l'accueil" onAction="#retourAccueil" style="-fx-margin: 10;" BorderPane.alignment="CENTER" />
+    </bottom>
+</BorderPane>
