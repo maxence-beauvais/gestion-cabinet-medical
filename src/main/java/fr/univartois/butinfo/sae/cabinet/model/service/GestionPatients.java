@@ -138,8 +138,8 @@ public class GestionPatients {
      * Cela protège la liste originale contre les modifications extérieures involontaires.
      * * @return Une nouvelle liste contenant l'ensemble des patients enregistrés.
      */
-    public List<Patient> listerTousLesPatients() {
-        return new ArrayList<>(patients);
+    public ObservableList<Patient> getPatients() {
+        return patients;
     }
 
     /**

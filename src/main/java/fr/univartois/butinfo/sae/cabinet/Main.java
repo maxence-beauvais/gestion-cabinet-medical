@@ -423,7 +423,7 @@ public class Main {
         LOGGER.info("\n=== ÉTAT FINAL ===");
 
         // Afficher tous les patients qui restent dans la liste
-        List<Patient> patients = gestionPatients.listerTousLesPatients();
+        List<Patient> patients = gestionPatients.getPatients();
         if (patients.isEmpty()) {
             LOGGER.debug("Aucun patient enregistré.");
             return;
