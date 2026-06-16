@@ -1,5 +1,8 @@
 package fr.univartois.butinfo.sae.cabinet.model.modele;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -33,7 +36,7 @@ public class Ordonnance {
   private LocalDate dateValidite;
 
   /** La liste interne des médicaments et prescriptions rattachés à cette ordonnance. */
-  private final List<LignePrescription> prescriptions;
+  private final ObservableList<LignePrescription> prescriptions;
 
   /** Remarques ou consignes particulières écrites par le médecin. */
   private String remarques;
@@ -56,7 +59,7 @@ public class Ordonnance {
     this.patient = patient;
     this.dateEmission = LocalDate.now();
     this.dateValidite = dateValidite;
-    this.prescriptions = new ArrayList<>();
+    this.prescriptions = FXCollections.observableArrayList();
     this.remarques = remarques;
   }
 
