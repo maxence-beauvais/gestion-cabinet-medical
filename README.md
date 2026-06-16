@@ -52,8 +52,8 @@ Fonctionnalités implémentées :
 
 **TABLEAU À COMPLÉTER**
 
-| Membre du groupe | Tâches réalisées                             | Ticket associé |
-|------------------|----------------------------------------------|----------------|
+| Membre du groupe  | Tâches réalisées                            | Ticket associé |
+|-------------------|---------------------------------------------|----------------|
 | VANSTRACEELE Lucas| Dépendance gradle logger                    | #1             |
 | BEAUVAIS Maxence  | Fichier de configuration log4j.xml          | #2             |
 | DUBREUCQ Kévin    | Remplacement des SOP par des logger         | #3             |
@@ -68,7 +68,14 @@ Fonctionnalités implémentées :
 | DUBREUCQ Kévin    | Tests Unitaire de la classe Recherche       | #13            |
 | VANSTRACEELE Lucas| Tests Unitaire de la classe GestionPatients | #14            |
 | BARLOY Thomas     | Tests Unitaire de la classe Ordonnance      | #15            |
-| BEAUVAIS Maxence  | Organistaion modele MVC                     | #18            |
+| BEAUVAIS Maxence  | Organisation modèle MVC                     | #18            |
+| VANSTRACEELE Lucas| Création Vue et contrôleur pour l'accueil   | #19            |
+| VANSTRACEELE Lucas| Création Vue et contrôleur pour patients    | #20            |
+| BEAUVAIS Maxence  | Création Vue et contrôleur pour médecins    | #21            |
+| DUBREUCQ Kévin    | Rédaction du README                         | #22            |
+| BARLOY Thomas     | Création Vue et contrôleur pour médicaments | #23            |
+| VANSTRACEELE Lucas| Création Vue et contrôleur pour Rendez-vous | #24            |
+| DUBREUCQ Kévin    | Création Vue et contrôleur pour Ordonnance  | #25            |
 
 
 
