@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Button?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.cabinet.controller.MedicamentListController">
+    <left>
+        <ListView fx:id="listViewMedicaments" prefWidth="250" style="-fx-padding: 10;" />
+    </left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label fx:id="lblNom" text="Nom : " />
+            <Label fx:id="lblPrix" text="Prix : " />
+            <Label fx:id="lblDesc" text="Description : " wrapText="true" />
+            <HBox spacing="10"><Button text="Ajouter" onAction="#ajouter" /><Button text="Modifier" onAction="#modifier" /><Button text="Supprimer" onAction="#supprimer" /></HBox>
+        </VBox>
+    </center>
+    <bottom><Button text="Retour" onAction="#retour" BorderPane.alignment="CENTER" /></bottom>
+</BorderPane>

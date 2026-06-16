@@ -106,8 +106,8 @@ public class GestionMedicaments {
      *
      * @return Une nouvelle liste contenant l'intégralité des médicaments référencés.
      */
-    public List<Medicament> listerTousLesMedicaments() {
-        return new ArrayList<>(medicaments);
+    public ObservableList<Medicament> listerTousLesMedicaments() {
+        return medicaments;
     }
 
     /**

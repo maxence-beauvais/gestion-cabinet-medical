@@ -11,7 +11,7 @@ import java.io.IOException;
 public class AccueilController {
     private CabinetFacade facade;
     private Stage stage;
-    private Scene sceneAccueil; // Pour y revenir plus tard
+    private Scene sceneAccueil;
 
     public void initContext(Stage stage, Scene sceneAccueil, CabinetFacade facade) {
         this.stage = stage;
@@ -52,7 +52,6 @@ public class AccueilController {
 
     @FXML
     void ouvrirGestionMedicaments(ActionEvent event) {
-        /**
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fr.univartois.butinfo.sae.cabinet.view/MedicamentListView.fxml"));
             Scene scene = new Scene(loader.load(), 800, 600);
@@ -64,7 +63,6 @@ public class AccueilController {
         } catch (IOException e) {
             e.printStackTrace();
         }
-         */
     }
 
     @FXML
