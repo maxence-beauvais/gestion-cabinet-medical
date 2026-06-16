@@ -186,8 +186,8 @@ public class GestionRendezVous {
      * Retourne une copie de la liste complète de tous les rendez-vous de l'application.
      * * @return Une nouvelle liste contenant tous les rendez-vous enregistrés.
      */
-    public List<RendezVous> listerTousLesRendezVous() {
-        return new ArrayList<>(rendezVous);
+    public ObservableList<RendezVous> listerTousLesRendezVous() {
+        return rendezVous;
     }
 
     /**

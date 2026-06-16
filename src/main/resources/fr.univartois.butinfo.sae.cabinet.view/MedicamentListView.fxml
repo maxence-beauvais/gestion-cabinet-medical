@@ -17,5 +17,5 @@
             <HBox spacing="10"><Button text="Ajouter" onAction="#ajouter" /><Button text="Modifier" onAction="#modifier" /><Button text="Supprimer" onAction="#supprimer" /></HBox>
         </VBox>
     </center>
-    <bottom><Button text="Retour" onAction="#retour" BorderPane.alignment="CENTER" /></bottom>
+    <bottom><Button text="Retour à l'accueil" onAction="#retour" BorderPane.alignment="CENTER" /></bottom>
 </BorderPane>

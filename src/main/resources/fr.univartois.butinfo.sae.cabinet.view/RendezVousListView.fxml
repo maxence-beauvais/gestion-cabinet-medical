@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.Button?>
+<BorderPane xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="fr.univartois.butinfo.sae.cabinet.controller.RendezVousListController">
+    <left><ListView fx:id="listViewRdv" prefWidth="300" style="-fx-padding: 10;" /></left>
+    <center>
+        <VBox spacing="10" style="-fx-padding: 20;">
+            <Label fx:id="lblPatient" text="Patient : " />
+            <Label fx:id="lblMedecin" text="Médecin : " />
+            <Label fx:id="lblDate" text="Date et heure : " />
+            <Label fx:id="lblMotif" text="Motif : " />
+            <HBox spacing="10"><Button text="Ajouter RDV" onAction="#ajouter" /><Button text="Annuler RDV" onAction="#annulerRdv" /></HBox>
+        </VBox>
+    </center>
+    <bottom><Button text="Retour" onAction="#retour" BorderPane.alignment="CENTER" /></bottom>
+</BorderPane>

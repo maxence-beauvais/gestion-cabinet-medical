@@ -11,7 +11,7 @@ import javafx.stage.Stage;
 
 public class MedecinFormController {
     @FXML private TextField txtNom, txtPrenom, txtOrdre, txtTarif;
-    @FXML private ComboBox<Specialite> comboSpecialite; // Utilisation demandée[cite: 19]
+    @FXML private ComboBox<Specialite> comboSpecialite;
 
     private Stage stage;
     private Scene scenePrecedente;
@@ -31,8 +31,8 @@ public class MedecinFormController {
             txtPrenom.setText(m.getPrenom());
             txtOrdre.setText(m.getNumeroOrdre());
             txtTarif.setText(String.valueOf(m.getTarifHoraire()));
-            comboSpecialite.getSelectionModel().select(m.getSpecialite()); // Sélection programmeatique[cite: 19]
-            txtOrdre.setDisable(true); // Numéro d'ordre non modifiable
+            comboSpecialite.getSelectionModel().select(m.getSpecialite());
+            txtOrdre.setDisable(true);
         }
     }
 
@@ -43,7 +43,7 @@ public class MedecinFormController {
             facade.getGestionMedecins().ajouterMedecin(nouveau);
         } else {
             facade.getGestionMedecins().mettreAJourMedecin(medecinEdite.getId(), txtNom.getText(), txtPrenom.getText(), tarif, "", "", comboSpecialite.getValue());
-            listViewRefresh(medecinEdite); // Rafraîchissement simulé via l'ObservableList[cite: 19]
+            listViewRefresh(medecinEdite);
         }
         stage.setScene(scenePrecedente);
     }
