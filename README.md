@@ -2,7 +2,7 @@
 
 ## Description du projet et des fonctionnalités implémentées
 
-**Ce projet nous permet de faire un application pour un cabinet médical.
+Ce projet nous permet de faire un application pour un cabinet médical.
 Fonctionnalités implémentées :
   - Affichage de la liste des patients
   - Ajout d'un patient
@@ -37,16 +37,16 @@ Fonctionnalités implémentées :
   - Ajout Vue Rendez-vous
   - Ajout Vue Liste des patients
   - Ajout Vue concernant l'ajout d'un patient
-  - 
 
-**
+
+
 
 ## Membres du groupe
 
-**BARLOY Thomas
-  BEAUVAIS Maxence
-  DUBREUCQ Kévin
-  VANSTRACEELE Lucas**
+BARLOY Thomas
+BEAUVAIS Maxence
+DUBREUCQ Kévin
+VANSTRACEELE Lucas
 
 ## Répartition du travail
 
